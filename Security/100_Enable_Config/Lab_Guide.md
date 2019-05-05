@@ -1,4 +1,4 @@
-﻿# Level 100: Enable CloudTrail via AWS Console
+﻿# Level 100: Enable Config via AWS Console
 
 ## Authors
 - Louay Shaat,  Solutions Architect
@@ -10,28 +10,34 @@
 The AWS console provides a graphical user interface to search and work with the AWS services.
 We will use the AWS console to enable Cloud Trail.
 
-### 1.1 CloudTrail
+### 1.1 Config
 Once you have logged into your AWS account you can use the search facility to locate Cloud Trail.
-All you need to do is type in *CloudTrail* in the search field.
-Once CloudTrail shows up you can click on **CloudTrail** to go to the CloudTrail service.
-![search-cloudtrail](Images/search-cloudtrail.png) 
+All you need to do is type in *Config* in the search field.
+Once Config shows up you can click on **Config** to go to the Config service.
+![search-config](Images/search-config.png) 
 
-### 1.2 Enable Cloud Trail in your selected region  
+### 1.2 Enable Config in your selected region  
 
-In the *CloudTrail* service console you can click on  **trails** to create a CloudTrail in your account.
-![create-cloudtrail](Images/create-cloudtrail.png) 
+In the *Config* service console you can click on the **Get Started Now** orange button to enable AWS Security Hub in your account.
+![create-cloudtrail](Images/enable-config.png) 
 
-**A CloudTrail is created in the region selected, ensure you are in the correct region.**
+**Config is created in the region selected, ensure you are in the correct region.**
 
-On the Create Trail page, for Trail name, type a name for your trail
+* On the Settings page, for Resource types to record, under All resources
+* Select Record all resources supported in this region
+* Select Include global resources
+* For Amazon S3 Bucket, 
+    * select Create a new bucket – choose the bucket name already filled for you
+* Amazon SNS topic - leave unselected
+* AWS Config role
+    * Select *Create AWS Config service-linked role*
+    
+![create-cloudtrail](Images/create-config.png) 
 
-* For Apply trail to all regions, choose Yes
-* For Management events, leave as default
-* For Data events, leave as default
-* For Storage location, Create a new S3 bucket, choose Yes
-* For S3 bucket, type a name for the bucket you want to designate for log file storage
-* Leave Advanced setting as default
-* Choose Create
+
+Jump to AWS Config Role
+For AWS Config role, select Create a role. For Role name, leave as default. and select NEXT
+On AWS Config rules page select SKIP
 
 The new trail appears on the Trails page. The Trails page shows the trails in your account from all regions.
 
