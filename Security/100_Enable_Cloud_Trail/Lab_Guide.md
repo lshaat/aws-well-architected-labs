@@ -14,7 +14,7 @@ We will use the AWS console to enable Cloud Trail.
 Once you have logged into your AWS account you can use the search facility to locate Cloud Trail.
 All you need to do is type in *Cloud trail* in the search field.
 Once Cloud Trail shows up you can click on **Cloudn Trail** to go to the Cloud Trail service.
-![search-security-hub](Images/search-security-hub.png) 
+![search-security-hub](Images/search-cloudtrail.png) 
 
 Alternatively you can go directly to the AWS Security Hub Console.
 [AWS Security Hub Console](https://console.aws.amazon.com/securityhub/)
