@@ -1,7 +1,7 @@
-﻿# Level 200: Automated Deployment of Detective Controls: Lab Guide
+﻿# Level 200: Automated Cloud Trail: Lab Guide
 
 ## Authors
-- Ben Potter, Security Lead, Well-Architected
+- Louay Shaat, Solutions Architect
 
 ## Table of Contents
 1. [Deployment](#deployment)
