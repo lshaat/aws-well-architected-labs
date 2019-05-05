@@ -1,19 +1,19 @@
-﻿# Level 100: Enable AWS Security Hub via AWS Console
+﻿# Level 100: Enable CloudTrail via AWS Console
 
 ## Authors
-- Pierre Liddle, Principal Security Architect
+- LKouay Shaat,  Solutions Architect
 
 ## Table of Contents
 1. [Getting Started](#getting_Started)
 
 ## 1. Getting Started <a name="getting_Started"></a>
 The AWS console provides a graphical user interface to search and work with the AWS services.
-We will use the AWS console to enable AWS Security Hub.
+We will use the AWS console to enable Cloud Trail.
 
 ### 1.1 AWS Security Hub
-Once you have logged into your AWS account you can use the search facility to locate Security Hub.
-All you need to do is type in *Security Hub* in the search field.
-Once Security Hub shows up you can click on **Security Hub** to go to the Security Hub service.
+Once you have logged into your AWS account you can use the search facility to locate Cloud Trail.
+All you need to do is type in *Cloud trail* in the search field.
+Once Cloud Trail shows up you can click on **Cloudn Trail** to go to the Cloud Trail service.
 ![search-security-hub](Images/search-security-hub.png) 
 
 Alternatively you can go directly to the AWS Security Hub Console.
