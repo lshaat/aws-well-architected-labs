@@ -39,7 +39,7 @@ On AWS Config rules page select SKIP
 AWS Config displays the Resource inventory page. AWS config is now configured.
 
 ## References & useful resources:
-[Config](https://aws.amazon.com/config)  
+[AWS Config](https://aws.amazon.com/config)  
 
 
 ## License

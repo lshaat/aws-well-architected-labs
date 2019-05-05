@@ -37,7 +37,7 @@ The new trail appears on the Trails page. The Trails page shows the trails in yo
 
 
 ## References & useful resources:
-[Cloud Trail](https://aws.amazon.com/cloudTrail/)  
+[AWS Cloud Trail](https://aws.amazon.com/cloudTrail/)  
 
 
 ## License
