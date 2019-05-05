@@ -16,25 +16,26 @@ All you need to do is type in *CloudTrail* in the search field.
 Once CloudTrail shows up you can click on **CloudTrail** to go to the CloudTrail service.
 ![search-cloudtrail](Images/search-cloudtrail.png) 
 
-Alternatively you can go directly to the AWS Security Hub Console.
-[AWS Security Hub Console](https://console.aws.amazon.com/securityhub/)
-
 ### 1.2 Enable Cloud Trail in your selected region  
 
 In the *CloudTrail* service console you can click on  **trails** to create a CloudTrail in your account.
 ![create-cloudtrail](Images/create-cloudtrail.png) 
 
+A CloudTrail is created in the region selected, ensure you are in the correct region.
 
-AWS Security Hub requires *services permissions* to run within your account.
-You can review the service role permissions in the following screen. Remember to click **Enable AWS Security Hub**
-![security-hub-service-permissions](Images/security-hub-service-permissions.png)
+On the Create Trail page, for Trail name, type a name for your trail
+For Apply trail to all regions, choose Yes
+For Management events, leave as default
+For Data events, leave as default
+For Storage location, Create a new S3 bucket, choose Yes
+For S3 bucket, type a name for the bucket you want to designate for log file storage
+Leave Advanced setting as default
+Choose Create
+The new trail appears on the Trails page. The Trails page shows the trails in your account from all regions.
 
-### 1.3 Explore AWS Security Hub
-With AWS Security Hub now enabled in your account, you can explore the security insights AWS Security Hub offers.
-![explore-aws-security-hub.png](Images/explore-aws-security-hub.png)
 
 ## References & useful resources:
-[AWS Security Hub](https://aws.amazon.com/security-hub/)  
+[Cloud Trail](https://aws.amazon.com/cloudTrail/)  
 
 
 ## License
