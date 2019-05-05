@@ -25,19 +25,13 @@ A CloudTrail is created in the region selected, ensure you are in the correct re
 
 On the Create Trail page, for Trail name, type a name for your trail
 
-For Apply trail to all regions, choose Yes
-
-For Management events, leave as default
-
-For Data events, leave as default
-
-For Storage location, Create a new S3 bucket, choose Yes
-
-For S3 bucket, type a name for the bucket you want to designate for log file storage
-
-Leave Advanced setting as default
-
-Choose Create
+* For Apply trail to all regions, choose Yes
+* For Management events, leave as default
+* For Data events, leave as default
+* For Storage location, Create a new S3 bucket, choose Yes
+* For S3 bucket, type a name for the bucket you want to designate for log file storage
+* Leave Advanced setting as default
+* Choose Create
 
 The new trail appears on the Trails page. The Trails page shows the trails in your account from all regions.
 
