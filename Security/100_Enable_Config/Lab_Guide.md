@@ -35,15 +35,11 @@ In the *Config* service console you can click on the **Get Started Now** orange 
 ![create-cloudtrail](Images/create-config.png) 
 
 
-Jump to AWS Config Role
-For AWS Config role, select Create a role. For Role name, leave as default. and select NEXT
 On AWS Config rules page select SKIP
-
-The new trail appears on the Trails page. The Trails page shows the trails in your account from all regions.
-
+AWS Config displays the Resource inventory page. AWS config is now configured.
 
 ## References & useful resources:
-[Cloud Trail](https://aws.amazon.com/cloudTrail/)  
+[Config](https://aws.amazon.com/config)  
 
 
 ## License
