@@ -21,7 +21,7 @@ Once CloudTrail shows up you can click on **CloudTrail** to go to the CloudTrail
 In the *CloudTrail* service console you can click on  **trails** to create a CloudTrail in your account.
 ![create-cloudtrail](Images/create-cloudtrail.png) 
 
-A CloudTrail is created in the region selected, ensure you are in the correct region.
+**A CloudTrail is created in the region selected, ensure you are in the correct region.**
 
 On the Create Trail page, for Trail name, type a name for your trail
 
