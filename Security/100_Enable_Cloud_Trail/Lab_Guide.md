@@ -10,7 +10,7 @@
 The AWS console provides a graphical user interface to search and work with the AWS services.
 We will use the AWS console to enable Cloud Trail.
 
-### 1.1 AWS Security Hub
+### 1.1 Cloud Trail
 Once you have logged into your AWS account you can use the search facility to locate Cloud Trail.
 All you need to do is type in *Cloud trail* in the search field.
 Once Cloud Trail shows up you can click on **Cloudn Trail** to go to the Cloud Trail service.
