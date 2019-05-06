@@ -31,7 +31,7 @@ Open the AWS Config console at IAM Console
 Select Policy from left panel of IAM console and then select Create Policy
 Select JSON. Delete the default policy and replace with the link below.
 
-```{
+{
     "Version": "2012-10-17",
     "Statement": [
         {
@@ -69,9 +69,9 @@ Select JSON. Delete the default policy and replace with the link below.
             ]
         }
     ]
-}```
+}
 
-***
+
 
 
 ### 3. Tear down this lab <a name="tear_down"></a>
