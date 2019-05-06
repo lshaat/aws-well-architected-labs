@@ -243,8 +243,8 @@ In the AWS Management Console, under Services, select CloudTrail
 * Select Trail from left pane
 * Select the trail name - ensure that trail is in same region in which have you created this lab resources
 * Turn off the trail
-I
-n a few minutes, In the Console, we can see that the trail is turned back on. This is done by invocation of the Lambda function triggered by the CloudWatch Rule created earlier which has detected the StopLogging event and executed Lambda function for remediation. You will also receive an email notification for this event
+
+In a few minutes, In the Console, we can see that the trail is turned back on. This is done by invocation of the Lambda function triggered by the CloudWatch Rule created earlier which has detected the StopLogging event and executed Lambda function for remediation. You will also receive an email notification for this event
 
 ## References & useful resources:
 [AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html)  
