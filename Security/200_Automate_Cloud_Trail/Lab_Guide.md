@@ -8,20 +8,26 @@
 Once you have logged into your AWS account, navigate bto the SNS service.
 All you need to do is type in *SNS* in the search field.
 Once Simple Notification Service shows up you can click on **Topics** to go to the Topics Sub Menu.
+
 ![search-SNS](Images/search-SNS.png) 
 
 Click on Create topic and select a Topic Name
+
 ![create-topic](Images/create-topic.png) 
 
 Once topic is created, select ARN of topic which will open Topic details page
 On Topic details page select Create Subscription
+
 ![topic-page](Images/topic-page.png) 
 
 Select protocol Email and provide your email address for notification
 Finish by selecting Create Subscription
+
 ![create-subscription](Images/create-subscription.png) 
+
 You will receive an email for subscription confirmation on your email, Confirm Subscription using the link received in email
 Check SNS topic to confirm subscription verification. It should show ARN for subscriber ID
+
 ![subscription-confirmation](Images/subscription-confirmation.png) 
 
 
@@ -95,7 +101,9 @@ On the Create function page: Choose Author from scratch
 Provide a name for the function. We’re using CloudTrailAutoResponder
 In the Runtime dropdown list, select Python 2.7 as our lambda function in in python
 Under Role, select Choose an existing role. Select the role CloudTrailRemediationLambdaRole and Create function
+
 ![lambda-creation](Images/lambda-creation.png) 
+
 Scroll down to the Designer section and select the name of your Lambda function and replace the code below
 
 ```
@@ -178,6 +186,7 @@ def lambda_handler(event, context):
 Configure environment variable as below
 Key: SNSARN
 Value: The SNS topic ARN we created earlier in Step-1
+
 ![lambda-function](Images/lambda-function.png)
 
 Save function by Selecting Save on top of the page
