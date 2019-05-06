@@ -13,6 +13,10 @@ Once Simple Notification Service shows up you can click on **Topics** to go to t
 Click on Create topic and select a Topic Name
 ![creatre-topic](Images/create-topic.png) 
 
+Once topic is created, select ARN of topic which will open Topic details page
+
+On Topic details page select Create Subscription
+
 ## 2. Knowledge Check <a name="knowledge_check"></a>
 The security best practices followed in this lab are: <a name="best_practices"></a>
 * [Automate alerting on key indicators](https://wa.aws.amazon.com/wat.question.SEC_4.en.html) AWS Cloudtrail, AWS Config and Amazon GuardDuty provide insights into your environment.
