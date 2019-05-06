@@ -11,13 +11,22 @@ Once Simple Notification Service shows up you can click on **Topics** to go to t
 ![search-SNS](Images/search-SNS.png) 
 
 Click on Create topic and select a Topic Name
-![creatre-topic](Images/create-topic.png) 
+![create-topic](Images/create-topic.png) 
 
 Once topic is created, select ARN of topic which will open Topic details page
-
 On Topic details page select Create Subscription
+![topic-page](Images/topic-page.png) 
 
-## 2. Knowledge Check <a name="knowledge_check"></a>
+Select protocol Email and provide your email address for notification
+Finish by selecting Create Subscription
+![create-subscription](Images/create-subscription.png) 
+You will receive an email for subscription confirmation on your email, Confirm Subscription using the link received in email
+Check SNS topic to confirm subscription verification. It should show ARN for subscriber ID
+![subscription-confirmation](Images/subscription-confirmation.png) 
+
+
+
+## 2. Create IAM policy for lambda function to turn ON CloudTrail
 The security best practices followed in this lab are: <a name="best_practices"></a>
 * [Automate alerting on key indicators](https://wa.aws.amazon.com/wat.question.SEC_4.en.html) AWS Cloudtrail, AWS Config and Amazon GuardDuty provide insights into your environment.
 * [Implement new security services and features:](https://wa.aws.amazon.com/wat.question.SEC_5.en.html) New features such as Amazon GuardDuty have been adopted.
