@@ -31,6 +31,7 @@ Open the AWS Config console at IAM Console
 Select Policy from left panel of IAM console and then select Create Policy
 Select JSON. Delete the default policy and replace with the link below.
 
+*Please ensure that you replace **AWS-ACCOUNT_ID** with your account ID*
 ```
 {
     "Version": "2012-10-17",
