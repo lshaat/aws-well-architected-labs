@@ -73,13 +73,116 @@ Select JSON. Delete the default policy and replace with the link below.
     ]
 }
 ```
+Click Review Policy
+Provide Policy name as *cloudtrail-remediation-lambda*
+Click Create Policy
 
 
+### 3. Create IAM role for your Lambda function
+On AWS IAM console, select Role from left panel
+Select Create Role
+* Select Lambda from the list of services that will use this role and then select Next: Permission
+* In search box provide the policy name we created previously *cloudtrail-remediation-lambda*
+* Select the check box next to the policy you created previously, *cloudtrail-remediation-lambda* and select Next: Review
+* Name your role *CloudTrailRemediationLambdaRole* and provide a description
+Select Create Role
 
-### 3. Tear down this lab <a name="tear_down"></a>
-The following instructions will remove the resources that have a cost for running them.
 
-Note: If you are planning on doing the lab [300_Incident_Response_with_AWS_Console_and_CLI](Security/300_Incident_Response_with_AWS_Console_and_CLI/Lab_Guide.md) we recommend you only tear down this stack after completing that lab as their is a dependency on AWS CloudTrail being enabled for the other lab.
+### 4. Create Lambda function
+In the AWS Management Console, under Services, select Lambda to go to the Lambda Console
+From the Dashboard, select Create Function button in the upper-right
+On the Create function page: Choose Author from scratch
+Provide a name for the function. We’re using CloudTrailAutoResponder
+In the Runtime dropdown list, select Python 2.7 as our lambda function in in python
+Under Role, select Choose an existing role. Select the role CloudTrailRemediationLambdaRole and Create function
+![lambda-creation](Images/lambda-creation.png) 
+Scroll down to the Designer section and select the name of your Lambda function and replace the code below
+
+```
+# Copyright 2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License").
+# You may not use this file except in compliance with the License.
+# A copy of the License is located at
+#
+#     http://aws.amazon.com/apache2.0/
+#
+# or in the "license" file accompanying this file.
+# This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
+# either express or implied. See the License for the specific language governing permissions
+# and limitations under the License.
+#
+# Description: Lambda function that sends notification on AWS CloudTrail changes and when a trail gets disabled it re-enables it back.
+#
+# Cloudtraillambdamonitor.py
+#
+# Author: Louay Shaat, shaaloua@amazon.com
+# Date: 2017-06-08
+#
+#
+import json
+import time
+import boto3
+import logging
+import os
+import botocore.session
+from botocore.exceptions import ClientError
+session = botocore.session.get_session()
+logging.basicConfig(level=logging.DEBUG)
+logger=logging.getLogger(__name__)
+# Defines Lambda function for automatically enabling AWS CloudTrail logs when it gets disabled 
+# and publish notification to SNS Topic on any changes to the AWS CloudTrail.
+def lambda_handler(event, context):
+    logger.setLevel(logging.DEBUG)
+    eventname = event['detail']['eventName']
+    snsARN = os.environ['SNSARN']          #Getting the SNS Topic ARN passed in by the environment variables.
+    logger.debug("Event is-- %s" %event)
+    logger.debug("Event Name is--- %s" %eventname)
+    logger.debug("SNSARN is-- %s" %snsARN) 
+    snsclient = boto3.client('sns')  
+# If the CloudTrail Logging is disabled we will send a notification for that 
+# and revert it back to enabled state. Note:- This automatic starting of logging will generate another SNS notification. 
+    if (eventname == 'StopLogging'):
+        cloudtrailArn= event['detail']['requestParameters']['name']
+        logger.info("AWS CloudTrail logging disabled for AWS Cloudtrail with ARN-- %s. Enabling the AWS Cloudtrail back again....." %cloudtrailArn)
+        #Sending the notification that the AWS CloudTrail has been disabled.
+        snspublish = snsclient.publish(
+                         TargetArn = snsARN,
+                         Subject=("CloudTrail event- \"%s\" received. Will automatically enable logging." %eventname),
+                         Message=json.dumps({'default': json.dumps(event)}),
+                         MessageStructure='json')
+       #Enabling the AWS CloudTrail logging     
+        try:
+            client = boto3.client('cloudtrail')
+            enablelogging = client.start_logging(Name=cloudtrailArn)
+            logger.debug("Response on enable CloudTrail logging- %s" %enablelogging)
+        except ClientError as e:
+           logger.error("An error occured: %s" %e)
+# Anything other than "StopLogging" event such as update, add/remove tags, create new trail etc.
+# just a notification is sent to the Amazon SNS topic subscribers. 
+    else:
+        logger.info("The CloudTrail event was %s, sending email to the SNS topic subscribed" %eventname)
+        try:
+            
+            #Sending the notification that a change has been made in AWS CloudTrail other than disabling it.
+            snspublish = snsclient.publish(
+                         TargetArn= snsARN,
+                         Subject=("CloudTrail event- \"%s\" received" %eventname),
+                         Message=json.dumps({'default': json.dumps(event)}),
+                         MessageStructure='json')
+            logger.debug("SNS Publish Response- %s" %snspublish)
+        except ClientError as e:
+           logger.error("An error occured: %s" %e)
+```
+
+Configure environment variable as below
+Key: SNSARN
+Value: The SNS topic ARN we created earlier in Step-1
+![lambda-function](Images/lambda-function.png)
+
+Save function by Selecting Save on top of the page
+
+
 
 Delete the stack:
 1. Sign in to the AWS Management Console, and open the CloudFormation console at https://console.aws.amazon.com/cloudformation/.
