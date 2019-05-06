@@ -227,16 +227,30 @@ In the AWS Management Console, under Services, select CloudWatch
   }
 }
 ```
+Add trigger for remediation by selecting Add Target
+Select Lambda Function from drop down
+For Function select name of the lambda function you created earlier *CloudTrailAutoResponder*
+Give your rule a name and description.
+Select Create Rule
+Verify that rule has been created
 
+![cloudwatch-rule](Images/cloudwatch-rule.png)
+
+### 6. Verify it works
+
+In the AWS Management Console, under Services, select CloudTrail
+
+* Select Trail from left pane
+* Select the trail name - ensure that trail is in same region in which have you created this lab resources
+* Turn off the trail
+I
+n a few minutes, In the Console, we can see that the trail is turned back on. This is done by invocation of the Lambda function triggered by the CloudWatch Rule created earlier which has detected the StopLogging event and executed Lambda function for remediation. You will also receive an email notification for this event
 
 ## References & useful resources:
-[AWS CloudTrail User Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html)  
-[AWS CloudFormation User Guide](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html)  
-[Amazon GuardDuty User Guide](https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html)  
-[AWS Config User Guide](https://docs.aws.amazon.com/config/latest/)  
+[AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html)  
+[AWS CloudWatch Rules](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/Create-CloudWatch-Events-Rule.html)  
+[Amazon SNS](https://docs.aws.amazon.com/sns/)   
 
-
-***
 
 ## License
 Licensed under the Apache 2.0 and MITnoAttr License. 
