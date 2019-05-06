@@ -170,8 +170,7 @@ def lambda_handler(event, context):
 # just a notification is sent to the Amazon SNS topic subscribers. 
     else:
         logger.info("The CloudTrail event was %s, sending email to the SNS topic subscribed" %eventname)
-        try:
-            
+        try:    
             #Sending the notification that a change has been made in AWS CloudTrail other than disabling it.
             snspublish = snsclient.publish(
                          TargetArn= snsARN,
