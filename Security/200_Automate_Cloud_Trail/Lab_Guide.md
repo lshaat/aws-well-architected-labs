@@ -27,11 +27,49 @@ Check SNS topic to confirm subscription verification. It should show ARN for sub
 
 
 ## 2. Create IAM policy for lambda function to turn ON CloudTrail
-The security best practices followed in this lab are: <a name="best_practices"></a>
-* [Automate alerting on key indicators](https://wa.aws.amazon.com/wat.question.SEC_4.en.html) AWS Cloudtrail, AWS Config and Amazon GuardDuty provide insights into your environment.
-* [Implement new security services and features:](https://wa.aws.amazon.com/wat.question.SEC_5.en.html) New features such as Amazon GuardDuty have been adopted.
-* [Automate configuration management:](https://wa.aws.amazon.com/wat.question.SEC_6.en.html) CloudFormation is being used to configure AWS CloudTrail, AWS Config and Amazon GuardDuty.
-* [Implement managed services:](https://wa.aws.amazon.com/wat.question.SEC_7.en.html) Managed services are utilized to increase your visibility and control of your environment.
+Open the AWS Config console at IAM Console
+Select Policy from left panel of IAM console and then select Create Policy
+Select JSON. Delete the default policy and replace with the link below.
+
+```{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "LambdaCloudtraiMonitor",
+            "Effect": "Allow",
+            "Action": [
+                "cloudtrail:DescribeTrails",
+                "cloudtrail:GetTrailStatus",
+                "cloudtrail:StartLogging"
+            ],
+            "Resource": [
+                "arn:aws:cloudtrail:*:<AWS-ACCOUNT-ID>:trail/*"
+            ]
+        },
+        {
+            "Sid": "CloudWacthLogspermissions",
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": [
+                "arn:aws:logs:*:*:*"
+            ]
+        },
+        {
+            "Sid": "SNSPublishpermissions",
+            "Effect": "Allow",
+            "Action": [
+                "sns:Publish"
+            ],
+            "Resource": [
+                "arn:aws:sns:*:*:*"
+            ]
+        }
+    ]
+}```
 
 ***
 
