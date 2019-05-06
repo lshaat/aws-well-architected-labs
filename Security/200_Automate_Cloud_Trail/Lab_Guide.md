@@ -190,30 +190,44 @@ Value: The SNS topic ARN we created earlier in Step-1
 
 Save function by Selecting Save on top of the page
 
+### 5. Create and Configure a CloudWatch Rule to detect event and trigger remediation
+In the AWS Management Console, under Services, select CloudWatch
 
+* On the left-hand side, under Events, select Rules
+* Click Create rule and provide following details
+    * Build Pattern to Match - Event By Service
+    * Service Name: CloudTrail
+    * Event Type: AWS API call via CloudTrail
+    * Specific Operations: StopLogging, StartLogging, UpdateTrail, DeleteTrail, CreateTrail, RemoveTags, AddTags, PutEventSelectors. 
+    
+    Note: Please put each of this parameter in separate row. Post this configuration your event pattern should look like as below
 
-Delete the stack:
-1. Sign in to the AWS Management Console, and open the CloudFormation console at https://console.aws.amazon.com/cloudformation/.
-2. Select the `DetectiveControls` stack.
-3. Click the Actions button then click Delete Stack.
-4. Confirm the stack and then click the Yes, Delete button.
+```
+{
+  "source": [
+    "aws.cloudtrail"
+  ],
+  "detail-type": [
+    "AWS API Call via CloudTrail"
+  ],
+  "detail": {
+    "eventSource": [
+      "cloudtrail.amazonaws.com"
+    ],
+    "eventName": [
+      "StopLogging",
+      "StartLogging",
+      "UpdateTrail",
+      "DeleteTrail",
+      "CreateTrail",
+      "RemoveTags",
+      "AddTags",
+      "PutEventSelectors"
+    ]
+  }
+}
+```
 
-Empty and delete the S3 buckets:
-1. Sign in to the AWS Management Console, and open the S3 console at https://console.aws.amazon.com/s3/.
-2. Select the CloudTrail bucket name you previously created without clicking the name.
-![s3-empty-bucket](Images/s3-empty-bucket.png)  
-3. Click Empty bucket and enter the bucket name in the confirmation box.  
-![s3-empty-confirm](Images/s3-empty-confirm.png)  
-4. Click Confirm and the bucket will be emptied when the bottom task bar has 0 operations in progress.  
-![s3-progress.png](Images/s3-progress.png)  
-5. With the bucket now empty, click Delete bucket.
-![s3-delete-bucket](Images/s3-delete-bucket.png)
-6. Enter the bucket name in the confirmation box and click Confirm.
-![s3-delete-confirm](Images/s3-delete-confirm.png)  
-7. Repeat steps 2 to 6 for the Config bucket you created.
-
-
-***
 
 ## References & useful resources:
 [AWS CloudTrail User Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html)  
